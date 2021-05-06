@@ -1,5 +1,6 @@
 var username = "";
 
+print username;
 if (username = "") {
   var element = document.getElementById("Heading1");
   element.innerHTML = "Welcome to Jacob's Bar!";
