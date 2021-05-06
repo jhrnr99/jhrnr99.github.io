@@ -5,7 +5,7 @@ function startPage() {
   element.innerHTML = "Welcome to Jacob's Bar!";
   element = document.getElementById("Question");
   element.innerHTML = "What should we call you?";
-  print username;
+  document.write(username);
 }
 
 function getInputValue(){
