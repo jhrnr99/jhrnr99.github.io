@@ -1,5 +1,6 @@
 
 function startPage() {
+  console.log("In startPage function");
   username = "";
   var element = document.getElementById("Heading1");
   element.innerHTML = "Welcome to Jacob's Bar!";
@@ -9,6 +10,7 @@ function startPage() {
 }
 
 function getInputValue(){
+  console.log("In getInputValue function");
   username = document.getElementById("input").value;
   var element = document.getElementById("Heading1");
   element.innerHTML = "Welcome " + username + "!";
