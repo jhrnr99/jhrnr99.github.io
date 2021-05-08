@@ -47,7 +47,22 @@ function writeDrinkOrder(username, drink) {
     username: username,
     drink: drink
   });
-  readData();
+  if (tableFlag == "N") {
+  	readData();
+  }
+  else {
+  	console.log("I'm here!");
+    var drink = newOrderRef.drink;
+    var user = newOrderRef.username;
+    var tr = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
+    td1.appendChild(text1);
+    tr.appendChild(td1);
+
+    table.appendChild(tr);
+    document.body.appendChild(table);
+  }
   /*key = newOrderRef.getKey();
   dbRef.child(key).limitToLast(1).on('child_added', (data) => {
   	readData(data);
@@ -59,10 +74,9 @@ function readData() {
   /*dbRef.on('child_added', (data) => {
     readData(data);
   });*/
-  if (tableFlag = "N") {
-    dbRef.on("value", function(snapshot) {
+  if (tableFlag == "N") {
+    dbRef.once("value", function(snapshot) {
       snapshot.forEach(function(childSnapshot) {
-        childSnapshot.forEach(function(childSnapshot) {
           console.log(childSnapshot.val());
           var drink = childSnapshot.val().drink;
           var user = childSnapshot.val().username;
@@ -76,23 +90,14 @@ function readData() {
           tr.appendChild(td1);
 
           table.appendChild(tr);
-          tableFlag = "Y";
-        });
       });
+      document.body.appendChild(table);
+      tableFlag = "Y";
     });
   } else {
-    dbRef.limitToLast(1).on("child_added", function(snap) {
-      console.log("tableFlag = Y");
-      var drink = snap.val().drink;
-      var user = snap.val().username;
-      var tr = document.createElement('tr');
-      var td1 = document.createElement('td');
-      var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
-      td1.appendChild(text1);
-      tr.appendChild(td1);
-
-      table.appendChild(tr);
-    });
+   // dbRef.limitToLast(1).on("child_added", function(snap) {
+      
+   // });
   }
-  document.body.appendChild(table);
+  
 }
