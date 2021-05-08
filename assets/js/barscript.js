@@ -1,5 +1,5 @@
 // fetching the data
-class Restaurants {
+class Drinks {
     async getData() {
         try {
             let response = await fetch("drinks.json");
@@ -37,7 +37,6 @@ function startPage() {
   drinkButton.style.visibility = "hidden";
   dbRef = firebase.database().ref("orders");
   tableFlag = "N"
-  const restaurants = new Restaurants();
 }
 
 function getInputValue() {
@@ -112,6 +111,7 @@ function readData() {
     document.body.appendChild(table);
     tableFlag = "Y";
   });
+  const drinks = new Drinks();
   const ui = new UI();
   drinks.getData().then(drinks => {
     ui.displayItems(drinks);
