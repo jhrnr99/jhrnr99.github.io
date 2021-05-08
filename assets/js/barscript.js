@@ -42,7 +42,7 @@ function drinkRequested() {
 
 function writeDrinkOrder(username, drink) {
   var ordersListRef = firebase.database().ref('orders');
-  newOrderRef = ordersListRef.push();
+  var newOrderRef = ordersListRef.push();
   newOrderRef.set({
     username: username,
     drink: drink
@@ -66,7 +66,6 @@ function readData() {
         table.appendChild(tr);
       });
     } else {
-    	key = newOrderRef.getKey();
     	dbRef.limitToLast(1).once('child_added', function(data) {
         var drink = data.val().drink;
         var user = data.val().username;
