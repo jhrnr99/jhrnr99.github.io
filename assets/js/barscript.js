@@ -111,8 +111,8 @@ function readData() {
     document.body.appendChild(table);
     tableFlag = "Y";
   });
-  const drinks = new Drinks();
-  const ui = new UI();
+  drinks = new Drinks();
+  ui = new UI();
   drinks.getData().then(drinks => {
     ui.displayItems(drinks);
   });
