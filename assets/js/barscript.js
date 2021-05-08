@@ -1,3 +1,33 @@
+// fetching the data
+class Restaurants {
+    async getData() {
+        try {
+            let response = await fetch("drinks.json");
+            let data = await response.json();
+            return data.items;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    }
+}
+
+class UI {
+    displayItems(drinks) {
+        let output = '';
+        drinks.forEach(drinks => {
+            output = output + `
+            <div class="drinks">
+            <h3>${drink.name}</h3>
+            <h4>Ingredients - ${drink.ingredients}</h4>
+            <h4>Type - ${drink.type}</h4>
+            </div>
+            `;
+        })
+        heading.innerHTML = output;
+    }
+}
+
 function startPage() {
   heading = document.getElementById("Heading1");
   heading.innerHTML = "Welcome to Jacob's Bar!";
@@ -7,6 +37,7 @@ function startPage() {
   drinkButton.style.visibility = "hidden";
   dbRef = firebase.database().ref("orders");
   tableFlag = "N"
+  const restaurants = new Restaurants();
 }
 
 function getInputValue() {
@@ -80,5 +111,9 @@ function readData() {
     }
     document.body.appendChild(table);
     tableFlag = "Y";
+  });
+  const ui = new UI();
+  drinks.getData().then(drinks => {
+    ui.displayItems(drinks);
   });
 }
