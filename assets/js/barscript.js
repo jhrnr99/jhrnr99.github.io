@@ -42,62 +42,44 @@ function drinkRequested() {
 
 function writeDrinkOrder(username, drink) {
   var ordersListRef = firebase.database().ref('orders');
-  var newOrderRef = ordersListRef.push();
+  newOrderRef = ordersListRef.push();
   newOrderRef.set({
     username: username,
     drink: drink
   });
-  if (tableFlag == "N") {
-  	readData();
-  }
-  else {
-  	console.log("I'm here!");
-    var drink = newOrderRef.drink;
-    var user = newOrderRef.username;
-    var tr = document.createElement('tr');
-    var td1 = document.createElement('td');
-    var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
-    td1.appendChild(text1);
-    tr.appendChild(td1);
-
-    table.appendChild(tr);
-    document.body.appendChild(table);
-  }
-  /*key = newOrderRef.getKey();
-  dbRef.child(key).limitToLast(1).on('child_added', (data) => {
-  	readData(data);
-  });*/
+  readData();
 }
 
 function readData() {
   table = document.createElement('table');
-  /*dbRef.on('child_added', (data) => {
-    readData(data);
-  });*/
-  if (tableFlag == "N") {
-    dbRef.once("value", function(snapshot) {
+  dbRef.on("value", function(snapshot) {
+    if (tableFlag == "N") {
       snapshot.forEach(function(childSnapshot) {
-          console.log(childSnapshot.val());
-          var drink = childSnapshot.val().drink;
-          var user = childSnapshot.val().username;
-          var tr = document.createElement('tr');
+        var drink = childSnapshot.val().drink;
+        var user = childSnapshot.val().username;
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
 
-          var td1 = document.createElement('td');
-
-          var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
-
-          td1.appendChild(text1);
-          tr.appendChild(td1);
-
-          table.appendChild(tr);
+        td1.appendChild(text1);
+        tr.appendChild(td1);
+        table.appendChild(tr);
       });
-      document.body.appendChild(table);
-      tableFlag = "Y";
-    });
-  } else {
-   // dbRef.limitToLast(1).on("child_added", function(snap) {
-      
-   // });
-  }
-  
+    } else {
+    	key = newOrderRef.getKey();
+    	dbRef.limitToLast(1).once('child_added', function(data) {
+        var drink = data.val().drink;
+        var user = data.val().username;
+        var tr = document.createElement('tr');
+        var td1 = document.createElement('td');
+        var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
+
+        td1.appendChild(text1);
+        tr.appendChild(td1);
+        table.appendChild(tr);
+        });
+    }
+    document.body.appendChild(table);
+    tableFlag = "Y";
+  });
 }
