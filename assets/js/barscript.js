@@ -54,12 +54,23 @@ function displayQueue() {
 
 function readData() {
   var ref = firebase.database().ref("orders");
+  var table = document.createElement('table');
 
   ref.on("value", function(snapshot) {
     snapshot.forEach(function(childSnapshot) {
-      var childData = childSnapshot.val();
+    	var childData = childSnapshot.val();
+    	var tr = document.createElement('tr');   
+
+      var td1 = document.createElement('td');
+
+      var text1 = document.createTextNode("Somebody get " + childData.username + " a " + childData.drink + "!");
+
+      td1.appendChild(text1);
+      tr.appendChild(td1);
+
+      table.appendChild(tr);
       var drink = childData.drink;
-      heading.innerHTML = "Somebody get " + childData.username + " a " + childData.drink + "!"
     });
+    document.body.appendChild(table);
   });
 }
