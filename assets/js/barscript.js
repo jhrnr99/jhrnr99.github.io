@@ -25,7 +25,6 @@ class UI {
             </div>
             `;
         })
-        heading.innerHTML = output;
     }
 }
 
