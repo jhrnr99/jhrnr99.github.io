@@ -36,22 +36,50 @@ function startPage() {
   drinkButton = document.getElementById("DrinkButton");
   drinkButton.style.visibility = "hidden";
   dbRef = firebase.database().ref("orders");
-  tableFlag = "N"
+  tableFlag = "N";
+  bartenderFlag = "N";
+  bartenderPw = "2009";
 }
 
 function getInputValue() {
-  username = document.getElementById("Input").value;
-  changeDisplay();
+  if (bartenderFlag == "Y") {
+    password = document.getElementById("Input").value;
+    if (password == bartenderPw) {
+      textField = document.getElementById("Input");
+      textField.style.display = "none";
+      button = document.getElementById("Button")
+      button.style.display = "none";
+      readData();
+    } else {
+    	bartenderFlag = "N";
+      alert("Incorrect password!");
+      location.reload();
+    }
+  } else {
+    username = document.getElementById("Input").value;
+    if (username == "bartender") {
+      document.getElementById("Input").value = "";
+    }
+    changeDisplay();
+  }
 }
 
 function changeDisplay() {
-  heading.innerHTML = "Welcome " + username + "!";
-  question.style.visibility = "hidden";
-  textField = document.getElementById("Input");
-  textField.style.display = "none";
-  button = document.getElementById("Button")
-  button.style.display = "none";
-  wantADrink();
+  if (username == "bartender") {
+  	question.style.display = "none";
+    textField = document.getElementById("Input");
+    textField.type = "password";
+    textField.placeholder = "Password";
+    bartenderFlag = "Y";
+  } else {
+    heading.innerHTML = "Welcome " + username + "!";
+    question.style.visibility = "hidden";
+    textField = document.getElementById("Input");
+    textField.style.display = "none";
+    button = document.getElementById("Button")
+    button.style.display = "none";
+    wantADrink();
+  }
 }
 
 function wantADrink() {
