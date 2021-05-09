@@ -19,8 +19,8 @@ class UI {
         drinks.forEach(function(drink) {
             output = output + `
             <div class="drinks">
-            <h3>drink.name</h3>
-            <h4>Ingredients - drink.ingredients</h4>
+            <h3>${drink.name}</h3>
+            <h4>Ingredients - ${drink.ingredients}</h4>
             <h4>Type - ${drink.type}</h4>
             </div>
             `;
