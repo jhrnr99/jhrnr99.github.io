@@ -83,6 +83,7 @@ function writeDrinkOrder(username, drink) {
 
 function readData() {
   table = document.createElement('table');
+  table.setAttribute("class","drink-table");
   dbRef.on("value", function(snapshot) {
     if (tableFlag == "N") {
       snapshot.forEach(function(childSnapshot) {
@@ -102,6 +103,7 @@ function readData() {
         var user = data.val().username;
         var tr = document.createElement('tr');
         var td1 = document.createElement('td');
+        td1.setAttribute("class","drink-data");
         var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
 
         td1.appendChild(text1);
