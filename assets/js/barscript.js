@@ -91,6 +91,7 @@ function readData() {
         var user = childSnapshot.val().username;
         var tr = document.createElement('tr');
         var td1 = document.createElement('td');
+        td1.setAttribute("class","drink-data");
         var text1 = document.createTextNode("Somebody get " + user + " a " + drink + "!");
 
         td1.appendChild(text1);
