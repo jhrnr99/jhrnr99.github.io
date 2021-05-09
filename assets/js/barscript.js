@@ -49,9 +49,9 @@ function changeDisplay() {
   heading.innerHTML = "Welcome " + username + "!";
   question.style.visibility = "hidden";
   textField = document.getElementById("Input");
-  textField.style.visibility = "hidden";
+  textField.style.display = "none";
   button = document.getElementById("Button")
-  button.style.visibility = "hidden";
+  button.style.display = "none";
   wantADrink();
 }
 
