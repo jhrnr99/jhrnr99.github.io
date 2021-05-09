@@ -16,11 +16,11 @@ class Drinks {
 class UI {
     displayItems(drinks) {
         let output = '';
-        drinks.forEach(drinks => {
+        drinks.forEach(function(drink) {
             output = output + `
             <div class="drinks">
-            <h3>${drink.name}</h3>
-            <h4>Ingredients - ${drink.ingredients}</h4>
+            <h3>drink.name</h3>
+            <h4>Ingredients - drink.ingredients</h4>
             <h4>Type - ${drink.type}</h4>
             </div>
             `;
