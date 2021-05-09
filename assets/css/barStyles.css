@@ -1,0 +1,33 @@
+.welcome-screen h1 {
+  text-align: center;
+}
+
+.questions h3 {
+  text-align: center;
+}
+
+.name-field {
+  text-align: center;
+}
+
+.section-title h2 {
+  text-align: left;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  text-transform: capitalize;
+  background-color: black;
+  color: rgb(235, 227, 227);
+  position: sticky;
+  letter-spacing: var(--mainSpacing);
+}
+
+.restaurants-center {
+  width: 90vw;
+  margin: 0 auto;
+  max-width: 1170px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-column-gap: 3.5rem;
+  grid-row-gap: 4.5rem;
+}
