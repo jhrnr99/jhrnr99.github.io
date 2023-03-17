@@ -9,8 +9,8 @@
 body {
   font-family: 'Lato', arial, sans-serif;
   color: #434343;
-  /*background: #DAE3E7;*/
-  background: #b6c2c6;
+  background: #DAE3E7;
+  /*background: #b6c2c6;*/
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -119,9 +119,9 @@ a.dotted-link:hover {
 /* ======= Header ======= */
 .header {
   padding: 30px 0;
-  /*background: #f5f5f5;*/
+  background: #f5f5f5;
   /*background: #514d4d;*/
-  background: #383d85;
+  /*background: #383d85;*/
   border-top: 10px solid #778492;
 }
 
