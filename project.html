@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jacob's Bar</title>
+    <link rel="stylesheet" href="assets/css/barStyles.css">
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.5.0/firebase-database.js"></script>
+
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyDLAnQVldfP7fJkkVgdPsCHgsIDFmmEpNE",
+        authDomain: "barmenu-4495e.firebaseapp.com",
+        projectId: "barmenu-4495e",
+        storageBucket: "barmenu-4495e.appspot.com",
+        messagingSenderId: "41422087977",
+        databaseURL: "https://barmenu-4495e-default-rtdb.firebaseio.com/",
+        appId: "1:41422087977:web:d2a99d0ee16f2db6497938"
+      };
+      firebase.initializeApp(firebaseConfig);
+			var database = firebase.database();
+    </script>
+    <script src="assets/js/barscript.js"></script>
+  </head>
+
+  <body onload="startPage()">
+    <div class="welcome-screen">
+    	<h1 id="Heading1"></h1>
+    </div>
+    <div class="questions">
+    	<h3 id="Question"></h3>
+    </div>
+    <div class="name-field">
+    	<button id="DrinkButton" type="button" onclick="drinkRequested();">Yes!</button>
+   	 <input type="text" placeholder="Type something..." id="Input">
+   	 <button id="Button" type="button" onclick="getInputValue();">Submit</button>
+    </div>
+  </body>
+
+</html>
