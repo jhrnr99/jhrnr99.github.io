@@ -1,4 +1,4 @@
-import * as Tone from 'tone'
+import * as Tone from 'tone';
 
 function startPage() {
   heading = document.getElementById("Heading1");
